@@ -1,0 +1,81 @@
+# DEFAULT #
+# https://www.superuser.com/a/1248085
+# https://www.github.com/coreos/matchbox/blob/master/scripts/tls/openssl.conf
+# https://www.openssl.org/docs/manmaster/man1/ca.html
+# https://www.openssl.org/docs/manmaster/man5/x509v3_config.html
+# https://www.openssl.org/docs/manmaster/man1/req.html
+
+[ ca ]
+default_ca              = CA_default
+
+[ CA_default ]
+
+dir                     = .
+certs                   = $dir/certs
+new_certs_dir           = $dir/certs.new
+database                = $dir/index.txt
+serial                  = $dir/serials
+
+crl_dir                 = $dir/crl
+crl                     = $dir/crl/ca.int.crl
+crlnumber               = $dir/crlnumber
+crl_extensions          = crl_ext
+default_crl_days        = 30
+default_md              = sha256
+
+default_days            = 375
+cert_opt                = ca_default
+name_opt                = ca_default
+policy                  = policy_loose
+preserve                = no
+
+[ policy_loose ]
+commonName              = supplied
+countryName             = optional
+emailAddress            = optional
+localityName            = optional
+organizationalUnitName  = optional
+organizationName        = optional
+stateOrProvinceName     = optional
+
+[ req ]
+default_bits            = 4096
+default_md              = sha256
+distinguished_name      = req_distinguished_name
+string_mask             = utf8only
+
+[ req_distinguished_name ]
+
+#####
+
+[ cauth ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer:keyid:always
+basicConstraints        = critical,CA:true,pathlen:0
+keyUsage                = critical,digitalSignature,cRLSign,keyCertSign
+
+#####
+
+[ complete ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer:keyid:always
+basicConstraints        = critical,CA:FALSE
+keyUsage                = critical,digitalSignature,keyEncipherment
+extendedKeyUsage        = critical,serverAuth,clientAuth
+# nsCertType              = server,client
+
+[ clients ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer:keyid:always
+basicConstraints        = critical,CA:FALSE
+keyUsage                = critical,digitalSignature,keyEncipherment,nonRepudiation
+extendedKeyUsage        = critical,clientAuth
+# nsCertType              = client
+
+[ servers ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer:keyid:always
+basicConstraints        = critical,CA:FALSE
+keyUsage                = critical,digitalSignature,keyEncipherment
+extendedKeyUsage        = critical,serverAuth
+# nsCertType              = server

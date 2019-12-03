@@ -1,0 +1,15 @@
+{
+  "names" :
+  [{
+    "C" : "CA" ,
+    "ST" : "Ontario" ,
+    "L" : "Toronto" ,
+    "O" : "Kubenet"
+  }] ,
+  "CN" : "kubenet.io" ,
+  "key" :
+  {
+    "algo" : "rsa" ,
+    "size" : 4096
+  }
+}

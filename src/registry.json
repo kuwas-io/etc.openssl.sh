@@ -1,0 +1,33 @@
+{
+  "names" :
+  [{
+    "C" : "CA" ,
+    "ST" : "Ontario" ,
+    "L" : "Toronto" ,
+    "O" : "Kubenet" ,
+    "OU" : "Registry"
+  }] ,
+  "CN" : "registry" ,
+  "hosts" :
+  [
+    "kubenet.io" ,
+    "*.kubenet.io" ,
+    "*.default" ,
+    "*.default.svc" ,
+    "*.default.svc.kubenet" ,
+    "*.default.svc.kubenet.local" ,
+    "docker.io" ,
+    "*.docker.io" ,
+    "quay.io" ,
+    "*.quay.io" ,
+    "gcr.io" ,
+    "*.gcr.io" ,
+    "localhost" ,
+    "127.0.0.1"
+  ] ,
+  "key" :
+  {
+    "algo" : "rsa" ,
+    "size" : 4096
+  }
+}
