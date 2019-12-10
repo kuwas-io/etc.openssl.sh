@@ -1,0 +1,60 @@
+---
+# #####
+# TERRAFORM LIFECYCLE MANAGED
+# All changes will be overwritten
+#####
+# https://help.github.com/en/actions/automating-your-workflow-with-github-actions
+# https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows
+# https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions
+# https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions
+# https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners
+name : pulls
+on :
+  pull_request :
+    types :
+    - "opened"
+    - "reopened"
+    - "edited"
+    - "closed"
+    - "synchronize"
+    - "ready_for_review"
+    - "review_requested"
+    - "review_request_removed"
+    - "unassigned"
+    - "assigned"
+    - "unlabeled"
+    - "labeled"
+    - "unlocked"
+    - "locked"
+
+jobs :
+  default :
+    runs-on : ubuntu-latest
+    steps :
+    - name : default label bug
+      uses : "npm/.github/actions/default@master"
+      with :
+        regex   : '^(fix)(\([\w\-]+\))?(\!)?(\:)'
+        subject : '${{ github.event.pull_request.title }}'
+        input   : 'issues | addLabels | context.repo | issue_number:${{ github.event.pull_request.number }} | labels:[ "bug" ]'
+        token   : '${{ secrets.GITHUB_TOKEN }}'
+    - name : default label feature
+      uses : "npm/.github/actions/default@master"
+      with :
+        regex   : '^(feat)(\([\w\-]+\))?(\!)?(\:)'
+        subject : '${{ github.event.pull_request.title }}'
+        input   : 'issues | addLabels | context.repo | issue_number:${{ github.event.pull_request.number }} | labels:[ "feature" ]'
+        token   : '${{ secrets.GITHUB_TOKEN }}'
+    - name : default label chore
+      uses : "npm/.github/actions/default@master"
+      with :
+        regex   : '^(chore)(\([\w\-]+\))?(\!)?(\:)'
+        subject : '${{ github.event.pull_request.title }}'
+        input   : 'issues | addLabels | context.repo | issue_number:${{ github.event.pull_request.number }} | labels:[ "chore" ]'
+        token   : '${{ secrets.GITHUB_TOKEN }}'
+    - name : default assignees actor
+      uses : "npm/.github/actions/default@master"
+      with :
+        input   : 'issues | addAssignees | context.repo | issue_number:${{ github.event.pull_request.number }} | assignees:[ "${{ github.actor }}" ]'
+        token   : '${{ secrets.GITHUB_TOKEN }}'
+

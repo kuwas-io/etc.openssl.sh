@@ -1,0 +1,19 @@
+{
+  "extends" :
+  [
+    "config:base" ,
+    "schedule:daily" ,
+    "default:disableRateLimiting" ,
+    "default:enableVulnerabilityAlerts" ,
+    "default:pinDigestsDisabled" ,
+    "default:pinVersions" ,
+    "default:rebaseStalePrs" ,
+    "default:semanticCommits" ,
+    "default:semanticPrefixFixDepsChoreOthers" ,
+    "default:separateMultipleMajorReleases" ,
+    "default:separatePatchReleases" ,
+    "default:timezone(America/New_York)" ,
+    "default:assignee(kuwas)" ,
+    "default:gitSignOff"
+  ]
+}
