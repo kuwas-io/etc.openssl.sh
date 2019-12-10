@@ -1,0 +1,63 @@
+{
+  "signing" :
+  {
+    "default" :
+    {
+      "expiry" : "87600h"
+    } ,
+
+    "profiles" :
+    {
+      "cauth" :
+      {
+        "is_ca" : true ,
+        "expiry" : "87600h" ,
+        "usages" :
+        [
+          "signing" ,
+          "digital signature" ,
+          "cert sign" ,
+          "crl sign"
+        ]
+      } ,
+
+      "complete" :
+      {
+        "expiry" : "87600h" ,
+        "usages" :
+        [
+          "signing" ,
+          "digital signature" ,
+          "key encipherment" ,
+          "server auth" ,
+          "client auth"
+        ]
+      } ,
+      "servers" :
+      {
+        "expiry" : "87600h" ,
+        "usages" :
+        [
+          "signing" ,
+          "digital signature" ,
+          "key encipherment" ,
+          "server auth"
+        ]
+      } ,
+      "clients" :
+      {
+        "expiry" : "87600h" ,
+        "usages" :
+        [
+          "signing" ,
+          "digital signature" ,
+          "key encipherment" ,
+          "client auth"
+        ]
+      }
+
+    }
+
+  }
+
+}
