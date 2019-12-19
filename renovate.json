@@ -9,7 +9,7 @@
     "default:pinVersions" ,
     "default:rebaseStalePrs" ,
     "default:semanticCommits" ,
-    "default:semanticPrefixFixDepsChoreOthers" ,
+    "default:semanticPrefixFix" ,
     "default:separateMultipleMajorReleases" ,
     "default:separatePatchReleases" ,
     "default:timezone(America/New_York)" ,

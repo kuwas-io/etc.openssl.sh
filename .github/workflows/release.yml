@@ -8,25 +8,21 @@
 # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions
 # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions
 # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners
-name : default
+name : release
 on :
   push :
-    branches : [ "master" ]
-    tags : [ "v[0-9]+.[0-9]+.[0-9]+" ]
-  pull_request :
-    types :
-    - "opened"
-    - "reopened"
-    - "synchronize"
+    branches :
+    - "master"
+
 jobs :
   default :
     runs-on : ubuntu-latest
     steps :
     - name : checkout
       uses : "actions/checkout@v1"
-    - name : docker build current
-      run : "docker build --tag $GITHUB_REPOSITORY:$GITHUB_SHA --file ./Dockerfile ."
-    - name : docker build latest
-      run : "docker build --tag $GITHUB_REPOSITORY:latest --file ./Dockerfile ."
-    - name : docker images all
-      run : "docker images --all"
+    - name : npm install
+      run : "npm install"
+    - name : npx release
+      env : { GITHUB_TOKEN : "${{ secrets.GITHUB_TOKEN }}" }
+      run : "npx semantic-release"
+

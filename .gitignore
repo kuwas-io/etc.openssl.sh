@@ -29,8 +29,9 @@ node_modules
 kubeconfig*
 
 # tf #
-*.tfstate*
 *.tfvars*
+!*.auto.tfvars*
+*.tfstate*
 .terraform
 
 # tmp #
