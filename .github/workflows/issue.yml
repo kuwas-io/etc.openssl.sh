@@ -55,6 +55,7 @@ jobs :
         token   : '${{ secrets.GITHUB_TOKEN }}'
     - name : default assignees actor
       uses : "npm/.github/actions/default@master"
+      if : contains( github.actor , '[bot]' ) == false
       with :
         input   : 'issues | addAssignees | context.repo | issue_number:${{ github.event.issue.number }} | assignees:[ "${{ github.actor }}" ]'
         token   : '${{ secrets.GITHUB_TOKEN }}'
