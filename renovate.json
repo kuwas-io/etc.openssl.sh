@@ -12,8 +12,8 @@
     "default:semanticCommitTypeAll(fix)" ,
     "default:separateMultipleMajorReleases" ,
     "default:separatePatchReleases" ,
-    "default:timezone(America/New_York)" ,
     "default:assignee(kuwas)" ,
     "default:gitSignOff"
-  ]
+  ] ,
+  "timezone" : "America/New_York"
 }
