@@ -27,7 +27,6 @@ title: "FEATURE » <title>"
 * n/a
 
 ## Who ##
-* @kuwas-io/default
 
 ## References ##
 * n/a
