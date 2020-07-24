@@ -19,6 +19,7 @@ on :
     - "opened"
     - "reopened"
     - "synchronize"
+
 jobs :
   default :
     runs-on : ubuntu-latest
@@ -31,3 +32,9 @@ jobs :
       run : "docker build --tag $GITHUB_REPOSITORY:latest --file ./Dockerfile ."
     - name : docker images all
       run : "docker images --all"
+    - name : npm install
+      run : "npm install"
+    - name : npx release
+      env : { GITHUB_TOKEN : "${{ secrets.GITHUB_TOKEN }}" }
+      run : "npx semantic-release"
+
