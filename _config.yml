@@ -1,6 +1,0 @@
----
-# #####
-# TERRAFORM LIFECYCLE MANAGED
-# All changes will be overwritten
-#####
-theme : "jekyll-theme-merlot"
