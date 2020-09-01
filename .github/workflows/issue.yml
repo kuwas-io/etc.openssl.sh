@@ -34,28 +34,28 @@ jobs :
     runs-on : ubuntu-latest
     steps :
     - name : default label bug
-      uses : "npm/.github/actions/default@master"
+      uses : "npm/.github/actions/default@v0.4.0"
       with :
         regex   : '^(BUG)'
         subject : '${{ github.event.issue.title }}'
         input   : 'issues | addLabels | context.repo | issue_number:${{ github.event.issue.number }} | labels:[ "bug" ]'
         token   : '${{ secrets.GITHUB_TOKEN }}'
     - name : default label feature
-      uses : "npm/.github/actions/default@master"
+      uses : "npm/.github/actions/default@v0.4.0"
       with :
         regex   : '^(FEATURE)'
         subject : '${{ github.event.issue.title }}'
         input   : 'issues | addLabels | context.repo | issue_number:${{ github.event.issue.number }} | labels:[ "feature" ]'
         token   : '${{ secrets.GITHUB_TOKEN }}'
     - name : default label question
-      uses : "npm/.github/actions/default@master"
+      uses : "npm/.github/actions/default@v0.4.0"
       with :
         regex   : '^(QUESTION)'
         subject : '${{ github.event.issue.title }}'
         input   : 'issues | addLabels | context.repo | issue_number:${{ github.event.issue.number }} | labels:[ "question" ]'
         token   : '${{ secrets.GITHUB_TOKEN }}'
     - name : default assignees actor
-      uses : "npm/.github/actions/default@master"
+      uses : "npm/.github/actions/default@v0.4.0"
       if : contains( github.actor , '[bot]' ) == false
       with :
         input   : 'issues | addAssignees | context.repo | issue_number:${{ github.event.issue.number }} | assignees:[ "${{ github.actor }}" ]'
