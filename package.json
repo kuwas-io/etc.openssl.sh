@@ -14,7 +14,7 @@
   } ,
   "release"         :
   {
-    "branch" : "main" ,
+    "branches" : [ "main" ] ,
     "tagFormat" : "v${version}" ,
     "plugins" :
     [
